@@ -5,7 +5,7 @@ class CarsController < ApplicationController
   def index
     cars = Car.all
 
-    render json: cars
+    render json: cars.to_json(include: {origin: {only: [:name]}})
   end
 
   # GET /cars/1
