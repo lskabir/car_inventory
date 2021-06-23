@@ -15,7 +15,7 @@ class Car {
         carsDiv.innerHTML +=
         `
         <ul>
-        <h2>${this.make}</h2>
+        <h3>${this.make}</h3>
         <li>Model: ${this.model}</li>
         <li>Color: ${this.color}</li>
         <li>Year: ${this.year}</li>
