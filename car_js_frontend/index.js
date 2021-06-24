@@ -20,14 +20,14 @@ function fetchCars() {
         let carsFormDiv = document.getElementById('cars-form-container')
         carsFormDiv.innerHTML += 
         `
-        <h3>Create New Car</h3>
+        <h3>Add New Car To The Inventory</h3>
         <form id='car-form'>
         <input type='text' id='make' placeholder='Make'><br>
         <input type='text' id='model' placeholder='Model'><br>
         <input type='text' id='color' placeholder='Color'><br>
         <input type='number' id='year' placeholder='Year'><br>
         <input type='text' id='originName' placeholder='Import/Domestic'><br><br>
-        <input type='submit' value='Create Car'>
+        <input type='submit' value='Add Car'>
         </form>
         `
         carsFormDiv.addEventListener('submit', carFormSubmission)
@@ -65,4 +65,14 @@ function fetchCars() {
         })
         document.getElementById('car-form').reset()
 
+    }
+
+    
+
+    function deleteCar() {
+        let carId = parseInt(event.target.dataset.id)
+        fetch(`${BASE_URL}/cars/${carId}`, {
+            method: 'DELETE'
+        })
+        this.location.reload()
     }
