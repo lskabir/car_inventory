@@ -1,0 +1,13 @@
+body {
+    text-align: center;
+    background-color: darkturquoise;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    color:hotpink;
+    text-decoration: underline;
+  }

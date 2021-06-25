@@ -1,3 +1,3 @@
 class Car < ApplicationRecord
-    belongs_to :origin, optional: true
+    belongs_to :origin
 end

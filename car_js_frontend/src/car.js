@@ -1,12 +1,12 @@
 class Car {
 
-    constructor(id, make, model, color, year, originID) {
+    constructor({id, make, model, color, year, origin_id}) {
         this.id = id
         this.make = make
         this.model = model
         this.color = color
         this.year = year
-        this.originID = originID
+        this.origin_id = origin_id
     }
 
     renderCars() {
@@ -14,14 +14,13 @@ class Car {
 
         carsDiv.innerHTML +=
         `
-        <ul>
         <h3>${this.make}</h3>
-        <li>Model: ${this.model}</li>
-        <li>Color: ${this.color}</li>
-        <li>Year: ${this.year}</li><br>
+        <p>Model: ${this.model}</p>
+        <p>Color: ${this.color}</p>
+        <p>Year: ${this.year}</p>
+        <p>Origin: ${this.origin_id}</p><br>
         <button class='edit-bttn' data-id=${this.id} onclick='editCar()'>Edit</button>
         <button class='delete-bttn' data-id=${this.id} onclick='deleteCar()'>Delete</button>
-        </ul>
         `
     }
 
