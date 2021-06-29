@@ -1,13 +1,43 @@
 body {
     text-align: center;
-    background-color: darkturquoise;
+    background-color: thistle;
+}
+
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    color:teal;
+    font-size: 60px;
+    font-weight: lighter;
+    font-style: oblique;
 }
 
 a {
-    text-decoration: none;
-}
+    background-color: paleturquoise;
+    transition: background-color .5s;
+  }
 
 a:hover {
-    color:hotpink;
-    text-decoration: underline;
-  }
+    background-color: rgb(163, 219, 188);
+    font-size: large;
+}
+
+.car-container {
+    background-color: powderblue;
+    font-size: 20px;
+    border: 4mm ridge;
+    padding: 20px;
+    margin: 10px 200px 20px;
+}
+
+#cars-form-container {
+    font-size: 20px;
+    background-color: powderblue;
+    font-size: 20px;
+    border: 4mm ridge;
+    padding: 20px;
+    margin: 10px 200px 20px;
+}
+
+#car-form {
+    margin: .4rem 0;
+}

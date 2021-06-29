@@ -1,16 +1,15 @@
 class Origin {
-
-    constructor({id, name}) {
+    constructor({id, name}, dropdownId) {
         this.id = id
         this.name = name
+        this.dropDownId = dropdownId
     }
 
     renderOrigin() {
-        let dropDown = document.getElementById('dropdown')
+        let dropDown = document.getElementById(this.dropDownId);
 
         dropDown.innerHTML += `
-        <option value=${this.id}>${this.name}</option>
+            <option value=${this.id}>${this.name}</option>
         `
     }
-
 }

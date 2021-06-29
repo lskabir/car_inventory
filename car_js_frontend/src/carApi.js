@@ -1,4 +1,3 @@
-
 class CarApi {
 
     static BASE_URL = 'http://localhost:3000/cars'
@@ -61,26 +60,6 @@ class CarApi {
             document.getElementById('car-form').reset()
     
         })
-        
     }
-
-    // static deleteCar() {
-    //     let deleteBttns = document.getElementsByClassName('delete-bttn')
-
-    //     for (const deleteBttn of deleteBttns) {
-    //         deleteBttn.addEventListener('click', (e) => {
-    //             let carId = parseInt(e.target.dataset.id)
-
-    //             fetch(this.BASE_URL/`${carId}`, {
-    //                 method: 'DELETE'
-    //             })
-    //             .then(r => r.json())
-    //             .then(car => alert(car.message))
-
-    //             this.location.reload()
-    //         })
-    //     }
-    // }
-    
 
 }
