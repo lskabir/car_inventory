@@ -19,13 +19,13 @@ class CarApi {
         `
         <h3>Add New Car To The Inventory</h3>
         <form id='car-form'>
-        <input type='text' id='make' placeholder='Make'><br>
-        <input type='text' id='model' placeholder='Model'><br>
-        <input type='text' id='color' placeholder='Color'><br>
-        <input type='number' id='year' placeholder='Year'><br>
+        <input class='form-control form-control-default' type='text' id='make' placeholder='Make'><br>
+        <input class='form-control form-control-default' type='text' id='model' placeholder='Model'><br>
+        <input class='form-control form-control-default' type='text' id='color' placeholder='Color'><br>
+        <input class='form-control form-control-default' type='number' id='year' placeholder='Year'><br>
 
         <span>Origin: <select name='origin' id='dropdown'></select></span><br><br>
-        <input type='submit' value='Add Car'>
+        <button class='btn btn-lg btn-outline-dark'>Add Car</button>
         </form>
         `
         carsFormDiv.addEventListener('submit', (e) => {
@@ -58,6 +58,8 @@ class CarApi {
                 c.renderCars()
             })
             document.getElementById('car-form').reset()
+
+            this.location.reload()
     
         })
     }

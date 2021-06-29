@@ -26,9 +26,9 @@ function editCar(id) {
                 <input type='text' id='model' value=${car.model}><br>
                 <input type='text' id='color' value=${car.color}><br>
                 <input type='number' id='year' value=${car.year}><br>
-                <select id='edit-car-dropdown'></select><br>
-                <input type='submit' data-id=${car.id} onclick='updateCar()'>
-                <button id='cancel' onclick='cancelEdit()'>Cancel</button>
+                <select id='edit-car-dropdown'></select><br><br>
+                <button class='btn btn-outline-success' data-id=${car.id} onclick='updateCar()'>Save</button>
+                <button class='btn btn-outline-secondary' onclick='cancelEdit()'>Cancel</button>
             </form>
             `
 
