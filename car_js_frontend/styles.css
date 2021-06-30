@@ -36,11 +36,24 @@ a:hover {
     width: 200px;
 }
 
+.edit-form {
+    background-color: snow;
+    margin-top: 20px;
+    padding: 30px 20px 20px;
+    box-shadow: 10px 5px 5px rgb(221, 114, 132);
+}
+
+#car-form {
+    background-color: snow;
+    padding: 30px 20px 20px;
+    box-shadow: 10px 5px 5px rgb(221, 114, 132);
+}
+
 #cars-form-container {
     color:saddlebrown;
     font-family: sans-serif;
     font-size: 20px;
-    background-color: snow;
+    background-color: powderblue;
     font-size: 20px;
     border: 4mm ridge;
     padding: 20px;

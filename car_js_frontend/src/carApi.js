@@ -9,6 +9,11 @@ class CarApi {
             for(const car of cars) {
                 let c = new Car(car)
                 c.renderCars()
+
+                const deleteBttns = document.querySelectorAll('#deleteBttn')
+                for (const deleteBttn of deleteBttns){
+                    deleteBttn.addEventListener('click', deleteCar)
+                }
             }
         })
     }
@@ -57,9 +62,8 @@ class CarApi {
                 let c = new Car(car)
                 c.renderCars()
             })
+            
             document.getElementById('car-form').reset()
-
-            this.location.reload()
     
         })
     }

@@ -18,19 +18,24 @@ function editCar(id) {
         .then(resp => resp.json())
         .then(car => {
             let carDiv = document.getElementById(`car-container-${id}`)
-            carDiv.innerHTML =
+            carDiv.innerHTML +=
             `
             <br>
-            <form>
-                <input type='text' id='make' value=${car.make}><br>
-                <input type='text' id='model' value=${car.model}><br>
-                <input type='text' id='color' value=${car.color}><br>
-                <input type='number' id='year' value=${car.year}><br>
+            <form id='edit-form-${car.id}' class='edit-form'>
+                <input class='form-control form-control-default' type='text' id='make' value=${car.make}><br>
+                <input class='form-control form-control-default' type='text' id='model' value=${car.model}><br>
+                <input class='form-control form-control-default' type='text' id='color' value=${car.color}><br>
+                <input class='form-control form-control-default' type='number' id='year' value=${car.year}><br>
                 <select id='edit-car-dropdown'></select><br><br>
-                <button class='btn btn-outline-success' data-id=${car.id} onclick='updateCar()'>Save</button>
-                <button class='btn btn-outline-secondary' onclick='cancelEdit()'>Cancel</button>
+                <button id='save-bttn' class='btn btn-outline-success' data-id=${car.id}>Save</button>
+                <button id='cancel-bttn' class='btn btn-outline-secondary' data-id=${car.id}>Cancel</button>
             </form>
             `
+            let saveBttn = document.getElementById('save-bttn')
+            saveBttn.addEventListener('click', updateCar)
+
+            let cancelBttn = document.getElementById('cancel-bttn')
+            cancelBttn.addEventListener('click', cancelEdit)
 
             fetchOrigin('edit-car-dropdown', (dropdown) => {
                 dropdown.value = car.origin_id;
@@ -39,8 +44,9 @@ function editCar(id) {
 }
 
 function updateCar() {
-    let formId = parseInt(event.target.dataset.id)
     event.preventDefault()
+    let formId = parseInt(event.target.dataset.id)
+
     let make = document.getElementById('make').value
     let model = document.getElementById('model').value
     let color = document.getElementById('color').value
@@ -63,13 +69,19 @@ function updateCar() {
         },
         body: JSON.stringify(car)
     })
-    
-    this.location.reload()
+    .then(resp => resp.json())
+    .then(car => {
+        let c = new Car(car)
+        c.renderCars()
+    })
+    let el = document.getElementById(`edit-form-${formId}`)
+    el.remove()
 }
 
 function cancelEdit() {
-    event.preventDefault()
-    this.location.reload()
+    let cancelId = parseInt(event.target.dataset.id)
+    let el = document.getElementById(`edit-form-${cancelId}`)
+    el.remove()
 }
 
 function deleteCar() {
@@ -78,8 +90,8 @@ function deleteCar() {
     fetch(`${baseURL}/cars/${carId}`, {
         method: 'DELETE'
     })
-
-    this.location.reload()
+    let el = document.getElementById(`car-container-${carId}`)
+    el.remove()
 }
 
 function fetchOrigin(dropDownId, callback = () => {}) {
