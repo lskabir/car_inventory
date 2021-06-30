@@ -1,5 +1,9 @@
 const baseURL = 'http://localhost:3000'
 let updating = false;
+const origins = {
+    3: 'Domestic',
+    4: 'Import'
+};
 
 document.addEventListener('DOMContentLoaded', () => {
     CarApi.fetchCars()
@@ -11,7 +15,6 @@ function editCar(id) {
     if (updating) {
         return
     }
-
     updating = true;
 
     fetch(`${baseURL}/cars/${id}`)
@@ -43,7 +46,20 @@ function editCar(id) {
         })
 }
 
-function updateCar() {
+function fetchOrigin(dropDownId, callback = () => {}) {
+    fetch(`${baseURL}/origins`)
+        .then(resp => resp.json())
+        .then(origins => {
+            for (const origin of origins) {
+                let o = new Origin(origin, dropDownId)
+                o.renderOrigin()
+            }
+
+            callback(document.getElementById(dropDownId));
+        })
+}
+
+function updateCar(event) {
     event.preventDefault()
     let formId = parseInt(event.target.dataset.id)
 
@@ -71,17 +87,21 @@ function updateCar() {
     })
     .then(resp => resp.json())
     .then(car => {
+        const name = origins[car.origin_id];
+        car.origin = { name };
+
         let c = new Car(car)
         c.renderCars()
     })
-    let el = document.getElementById(`edit-form-${formId}`)
-    el.remove()
+
+    cancelEdit(event);
 }
 
-function cancelEdit() {
+function cancelEdit(event) {
     let cancelId = parseInt(event.target.dataset.id)
     let el = document.getElementById(`edit-form-${cancelId}`)
     el.remove()
+    updating = false;
 }
 
 function deleteCar() {
@@ -92,17 +112,4 @@ function deleteCar() {
     })
     let el = document.getElementById(`car-container-${carId}`)
     el.remove()
-}
-
-function fetchOrigin(dropDownId, callback = () => {}) {
-    fetch(`${baseURL}/origins`)
-        .then(resp => resp.json())
-        .then(origins => {
-            for (const origin of origins) {
-                let o = new Origin(origin, dropDownId)
-                o.renderOrigin()
-            }
-
-            callback(document.getElementById(dropDownId));
-        })
 }

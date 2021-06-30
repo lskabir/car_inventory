@@ -59,12 +59,14 @@ class CarApi {
             })
             .then(resp => resp.json())
             .then(car => {
+                const name = origins[car.origin_id];
+                car.origin = { name };
+                
                 let c = new Car(car)
                 c.renderCars()
             })
-            
+
             document.getElementById('car-form').reset()
-    
         })
     }
 
