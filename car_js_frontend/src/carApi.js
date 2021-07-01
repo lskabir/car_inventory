@@ -9,13 +9,15 @@ class CarApi {
             for(const car of cars) {
                 let c = new Car(car)
                 c.renderCars()
-
-                const deleteBttns = document.querySelectorAll('#deleteBttn')
-                for (const deleteBttn of deleteBttns){
-                    deleteBttn.addEventListener('click', deleteCar)
-                }
             }
         })
+    }
+
+    static deleteFunc() {
+        const deleteBttns = document.querySelectorAll('#deleteBttn')
+        for (const deleteBttn of deleteBttns){
+            deleteBttn.addEventListener('click', deleteCar)
+        }
     }
 
     static createCar() {
@@ -35,6 +37,7 @@ class CarApi {
         `
         carsFormDiv.addEventListener('submit', (e) => {
             e.preventDefault()
+            
             let make = document.getElementById('make').value
             let model = document.getElementById('model').value
             let color = document.getElementById('color').value
@@ -65,7 +68,6 @@ class CarApi {
                 let c = new Car(car)
                 c.renderCars()
             })
-
             document.getElementById('car-form').reset()
         })
     }

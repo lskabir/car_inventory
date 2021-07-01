@@ -1,14 +1,30 @@
 const baseURL = 'http://localhost:3000'
+let carLists = document.getElementById('list-of-cars')
 let updating = false;
+
 const origins = {
     3: 'Domestic',
     4: 'Import'
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    CarApi.fetchCars()
     CarApi.createCar()
     fetchOrigin('dropdown')
+})
+
+carLists.addEventListener('click', (event) => {
+    if (event.target.value === 'View List Of Available Cars'){
+        document.querySelectorAll('.car-container').forEach(car => {
+            car.classList.remove('hidden')
+        })
+        CarApi.fetchCars()
+        event.target.value = 'Hide Car List'
+    } else if (event.target.value === 'Hide Car List') {
+        document.querySelectorAll('.car-container').forEach(car => {
+            car.classList.add('hidden')
+        })
+        event.target.value = 'View List Of Available Cars'
+    }
 })
 
 function editCar(id) {
@@ -104,7 +120,7 @@ function cancelEdit(event) {
     updating = false;
 }
 
-function deleteCar() {
+function deleteCar(event) {
     let carId = parseInt(event.target.dataset.id)
 
     fetch(`${baseURL}/cars/${carId}`, {
