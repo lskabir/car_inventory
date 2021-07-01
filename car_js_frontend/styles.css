@@ -12,14 +12,18 @@ h1 {
 }
 
 a {
+    color:red;
     font-size: 20px;
-    background-color: paleturquoise;
     transition: background-color .5s;
   }
 
 a:hover {
     background-color: rgb(163, 219, 188);
     font-size: large;
+}
+
+.hidden {
+    display: none;
 }
 
 .car-container {

@@ -27,15 +27,11 @@ class Car {
 
         if (carContainer) {
             carContainer.innerHTML = carInfoContent;
-            
-            const deleteBttns = document.querySelectorAll('#deleteBttn')
-            for (const deleteBttn of deleteBttns){
-                deleteBttn.addEventListener('click', deleteCar)
-            }
-        }
-        else {
+            CarApi.deleteFunc()
+        } else {
             carsDiv.innerHTML +=
                 `<div class="car-container" id="${containerId}">${carInfoContent}</div>`
+                CarApi.deleteFunc()
         }
 
     }
