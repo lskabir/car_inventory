@@ -21,7 +21,7 @@ class Car {
             <p>Color: ${this.color}</p>
             <p>Year: ${this.year}</p>
             <p>Origin: ${this.origin}</p><br>
-            <button class='btn btn-lg btn-outline-dark edit-bttn' data-id=${this.id} onclick='editCar(${this.id})'>Edit</button>
+            <button class='btn btn-lg btn-outline-light edit-bttn' data-id=${this.id} onclick='editCar(${this.id})'>Edit</button>
             <button id='deleteBttn' class='btn btn-lg btn-outline-danger delete-bttn' data-id=${this.id}>Delete</button>
         `;
 

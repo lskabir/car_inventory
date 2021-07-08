@@ -1,6 +1,6 @@
 body {
     text-align: center;
-    background-color: rgb(245, 80, 245);
+    background-color: white;
 }
 
 h1 {
@@ -18,7 +18,7 @@ a {
   }
 
 a:hover {
-    background-color: rgb(163, 219, 188);
+    background-color: rgb(225, 245, 234);
     font-size: large;
 }
 
@@ -27,8 +27,8 @@ a:hover {
 }
 
 .car-container {
-    background-color: powderblue;
-    color:rgb(52, 102, 74);
+    background-color: #0A1931;
+    color:white;
     font-family: sans-serif;
     font-size: 20px;
     border: 4mm ridge;
