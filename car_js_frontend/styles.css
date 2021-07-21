@@ -36,6 +36,11 @@ a:hover {
     margin: 10px 200px 20px;
 }
 
+.form-control {
+    margin: auto;
+    width: 200px;
+}
+
 .car-img {
     width: 200px;
 }

@@ -1,5 +1,6 @@
 const baseURL = 'http://localhost:3000'
 let carLists = document.getElementById('list-of-cars')
+let searchbar = document.getElementById('searchBar')
 let updating = false;
 
 const origins = {
@@ -10,6 +11,19 @@ const origins = {
 document.addEventListener('DOMContentLoaded', () => {
     CarApi.createCar()
     fetchOrigin('dropdown')
+})
+
+searchbar.addEventListener('keyup', () => {
+    let input = searchbar.value.toLowerCase()
+    let eachContainer = document.getElementsByClassName('car-container')
+    
+    for (container of eachContainer) {
+        if (!container.innerHTML.toLowerCase().includes(input)) {
+            container.classList.add('hidden')
+        } else {
+            container.classList.remove('hidden')
+        }
+    }
 })
 
 carLists.addEventListener('click', (event) => {
